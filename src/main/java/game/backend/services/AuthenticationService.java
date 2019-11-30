@@ -33,9 +33,9 @@ public class AuthenticationService {
 
         if (u.getUsername()==null || u.getPassword()==null || u.getName() == null)  return Response.status(400).entity(u).build();
         User reg = new User(u.getUsername(),u.getPassword(),u.getName());
-        int a = tm.addUser(reg);
+        int res = tm.addUser(reg);
         UserTO userTO = new UserTO(reg); //We create the UserTO with the parameters of the user to just send the important info
-        if (a == 0){return Response.status(201).entity(userTO).build();}
+        if (res == 0){return Response.status(201).entity(userTO).build();}
         else{return Response.status(406).entity(userTO).build();}
     }
 
@@ -45,9 +45,9 @@ public class AuthenticationService {
     @POST  //OKEY Login User
     @ApiOperation(value = "Login a User", notes = "asdasd")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successful"),
+            @ApiResponse(code = 200, message = "Successful",response = UserTO.class),
             @ApiResponse(code = 403, message = "Forbidden Wrong Login",response = FormReg.class),
-            @ApiResponse(code = 400, message = "Bad Reguest Invalid parameters", response = int.class)
+            @ApiResponse(code = 400, message = "Bad Reguest Invalid parameters", response = FormReg.class)
 
 
     })
@@ -57,8 +57,10 @@ public class AuthenticationService {
     public Response logUser(FormReg u) {
 
         if (u.getUsername()==null || u.getPassword()==null)  return Response.status(400).entity(u).build();
-        int a = tm.checkUser(u.getUsername(),u.getPassword());
-        if (a == 0){return Response.status(200).entity(u).build();} //return reg
+        User login = new User(u.getUsername(),u.getPassword(),u.getName());
+        int a = tm.checkUser(login);
+        UserTO res = new UserTO(login);
+        if (a == 0){return Response.status(200).entity(res).build();} //return the user with all the important info
         else{return Response.status(403).entity(u).build();}
     }
 }

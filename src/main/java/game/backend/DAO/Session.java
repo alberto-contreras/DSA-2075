@@ -1,4 +1,7 @@
 package game.backend.DAO;
+import game.backend.models.Obj;
+import game.backend.models.User;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,9 +11,10 @@ import java.util.List;
  */
 
 public interface Session <E> {
-    void save(Object entity);
+    void save(Object entity); //Save all objects --> In particular a User
     void close();
-    //Object get(Class theClass, int ID);
+    User getUserByUsername (User entity, String field);
+    //Object get(Object entity, String field); //Make a SELECT in the DB in order to check the credentials
     //void update(Object object);
     //void delete(Object object);
     //List<Object> findAll(Class theClass);

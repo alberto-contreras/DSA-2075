@@ -7,15 +7,6 @@ public class User {
      * Atributes
      */
     int ID;
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
     String username;
     String name;
     String password;
@@ -39,7 +30,13 @@ public class User {
      //   this.myObj= null;
      //   this.myGames=null;
     }
+    public int getID() {
+        return ID;
+    }
 
+    public void setID(int ID) {
+        this.ID = ID;
+    }
     public String getUsername() {
         return username;
     }
@@ -139,6 +136,10 @@ public class User {
         public void setQuantity(int quantity) {
             this.quantity = quantity;
         }
+    }
+
+    public String toString() {
+        return "ID:"+this.ID+"username: "+this.username+" name:"+this.name+" passwd: "+this.password+" attack:"+this.attack+" defense:"+this.defense+" health:"+this.healthPoints+" money:"+this.money;
     }
 
 }

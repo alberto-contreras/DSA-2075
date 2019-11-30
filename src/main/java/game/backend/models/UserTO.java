@@ -9,6 +9,7 @@ import game.backend.models.User;
 public class UserTO {
 
 
+    int ID;
     String username;
     String name;
     String password;
@@ -22,6 +23,7 @@ public class UserTO {
     }
 
     public UserTO(User user) {
+        this.ID =user.getID();
         this.username = user.getUsername();
         this.name = user.getName();
         this.password = user.getPassword();
@@ -29,6 +31,14 @@ public class UserTO {
         this.attack = user.getAttack();
         this.defense = user.getDefense();
         this.money = user.getMoney();
+
+    }
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getUsername() {

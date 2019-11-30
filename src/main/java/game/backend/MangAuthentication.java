@@ -15,7 +15,7 @@ public interface MangAuthentication {
      * @return 0-Okey 1-Wrong
      *
     * */
-    public int checkUser (String u, String p);
+    public int checkUser (User u);
 
 
 }
