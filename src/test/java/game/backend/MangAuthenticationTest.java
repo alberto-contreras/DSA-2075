@@ -14,7 +14,7 @@ public class MangAuthenticationTest {
     public void testAddUser() {
         mauth = new MangAuthenticationImpl();
         int res = mauth.addUser(new User("Alberto", "1234", "Alb"));
-        Assert.assertEquals(0,res);
+        Assert.assertEquals(1,res);
     }
 
     @Test

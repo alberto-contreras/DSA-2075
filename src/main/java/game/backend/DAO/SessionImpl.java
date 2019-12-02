@@ -85,55 +85,6 @@ public class SessionImpl implements Session {
 
 
     }
-
-
-    /**
-     *  We search in the DB the user with the username = field and then in MangAuthenticationImpl we
-     *  check if the password and username are the same in order to login
-     * @param user
-     * @param field
-     * @return User
-     */
-
-
-    public  User getUserByUsername(User user, String field) {
-
-        String selectQuery = QueryHelper.createQuerySELECT(user,field);
-        logger.debug("Select User Query:"+ selectQuery);
-        User returnUser = new User();
-        PreparedStatement pstm = null;
-
-        try {
-            pstm = conn.prepareStatement(selectQuery);
-            int i = 1;
-            Object value = null;
-            value = ObjectHelper.getter(user, field); //Here we get the username of the user that we put as parmeters
-            pstm.setObject(i, value); //We set in the in the question symbol the value
-            logger.debug("FINAL SELECT:"+pstm);
-            ResultSet res =pstm.executeQuery(); // Execute the query in the database
-            while(res.next()){
-                logger.warn("OKEY Something to be return");
-                returnUser.setUsername(res.getString("username"));//We fill the return User with
-                returnUser.setPassword(res.getString("password"));//what we obtain from the DB
-                returnUser.setName(res.getString("name"));
-                returnUser.setID(res.getInt("ID"));
-                returnUser.setAttack(res.getInt("attack"));
-                returnUser.setDefense(res.getInt("defense"));
-                returnUser.setHealthPoints(res.getInt("healthpoints"));
-                returnUser.setMoney(res.getInt("money"));
-                returnUser.setID(res.getInt("ID"));
-            }
-            logger.debug("FINAL User to return:"+returnUser.toString());
-            logger.debug("FINAL User :"+returnUser.getID());
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return returnUser;
-
-
-    }
-
     public void close() {
         try {
             conn.close();

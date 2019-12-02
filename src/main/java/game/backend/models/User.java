@@ -139,7 +139,17 @@ public class User {
     }
 
     public String toString() {
-        return "ID:"+this.ID+"username: "+this.username+" name:"+this.name+" passwd: "+this.password+" attack:"+this.attack+" defense:"+this.defense+" health:"+this.healthPoints+" money:"+this.money;
+        return "ID: "+this.ID +" username: "+this.username+" name:"+this.name+" passwd: "+this.password+" attack:"+this.attack+" defense:"+this.defense+" health:"+this.healthPoints+" money:"+this.money;
+    }
+    public void clone(User clone){
+        this.ID = clone.getID();
+        this.username = clone.getUsername();
+        this.password = clone.getPassword();
+        this.name = clone.getName();
+        this.healthPoints=clone.getHealthPoints();
+        this.attack=clone.getAttack();
+        this.defense= clone.getDefense();
+        this.money=clone.getMoney();
     }
 
 }

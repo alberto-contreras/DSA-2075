@@ -7,13 +7,13 @@ import java.util.List;
 
 /**
  * Interface that will manage all the DB operations
- * like get,save, particular query...
+ * like get,save...(GENERIC QUERY)
  */
 
 public interface Session <E> {
     void save(Object entity); //Save all objects --> In particular a User
     void close();
-    User getUserByUsername (User entity, String field);
+
     //Object get(Object entity, String field); //Make a SELECT in the DB in order to check the credentials
     //void update(Object object);
     //void delete(Object object);

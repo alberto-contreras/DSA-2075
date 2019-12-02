@@ -13,7 +13,18 @@ public class FactorySession {
 
         Session session = new SessionImpl(conn);
 
+
         return session;
+    }
+    public static UserDAO openUserDAO() {
+
+
+        Connection conn = getConnection();
+
+        UserDAO userDAO = new UserDAOImpl(conn);
+
+
+        return userDAO;
     }
 
 

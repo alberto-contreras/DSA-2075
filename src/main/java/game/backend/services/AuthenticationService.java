@@ -11,14 +11,14 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Api(value = "/authen", description = "Endpoint to Authentucation Service")
+@Api(value = "/authen", description = "Endpoint to Authentication Service")
 @Path("/authent")
 public class AuthenticationService {
     public MangAuthenticationImpl tm = new MangAuthenticationImpl();
     public AuthenticationService(){}
 
     @POST  //OKEY Create a new User
-    @ApiOperation(value = "Create a new User", notes = "asdasd")
+    @ApiOperation(value = "Create a new User", notes = "Register")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Created",response = UserTO.class),
             @ApiResponse(code = 406, message = "Not Acceptable Already exist this user",response = FormReg.class),
@@ -43,11 +43,11 @@ public class AuthenticationService {
 
 
     @POST  //OKEY Login User
-    @ApiOperation(value = "Login a User", notes = "asdasd")
+    @ApiOperation(value = "Login a User", notes = "Login")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successful",response = UserTO.class),
             @ApiResponse(code = 403, message = "Forbidden Wrong Login",response = FormReg.class),
-            @ApiResponse(code = 400, message = "Bad Reguest Invalid parameters", response = FormReg.class)
+            @ApiResponse(code = 400, message = "Bad Request Invalid parameters", response = FormReg.class)
 
 
     })
