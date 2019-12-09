@@ -33,6 +33,15 @@ public class QueryHelper {
 
         return sb.toString();
     }
+    public static String createQueryDELETE(Object entity,String field, String field2){
+        StringBuffer sb = new StringBuffer();
+        sb.append("DELETE FROM ").append(entity.getClass().getSimpleName());
+        sb.append(" WHERE "+field+" = ?");
+        sb.append(" AND "+field2+" = ?");
+
+
+        return sb.toString();
+    }
 
 
 }

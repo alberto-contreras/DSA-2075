@@ -7,6 +7,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.eclipse.persistence.oxm.annotations.XmlParameter;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -34,6 +36,7 @@ public class AuthenticationService {
         if (u.getUsername()==null || u.getPassword()==null || u.getName() == null)  return Response.status(400).entity(u).build();
         User reg = new User(u.getUsername(),u.getPassword(),u.getName());
         int res = tm.addUser(reg);
+        tm.checkUser(reg);
         UserTO userTO = new UserTO(reg); //We create the UserTO with the parameters of the user to just send the important info
         if (res == 0){return Response.status(201).entity(userTO).build();}
         else{return Response.status(406).entity(userTO).build();}
@@ -62,5 +65,21 @@ public class AuthenticationService {
         UserTO res = new UserTO(login);
         if (a == 0){return Response.status(200).entity(res).build();} //return the user with all the important info
         else{return Response.status(403).entity(u).build();}
+    }
+    @DELETE
+    @ApiOperation(value = "DELETE a User", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successful"),
+            @ApiResponse(code = 400, message = "Invalid parameters")
+    })
+    @Path("/del/{username}")
+    public Response deleteUser(@PathParam("username")String username) {
+        if ((username)==null)  return Response.status(400).build();
+        User aux = new User(username,"","");
+        int res = tm.deleteUser(aux);
+        if (res == 0){return Response.status(200).build();}
+        else {
+            return Response.status(400).build();
+        }
     }
 }

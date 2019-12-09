@@ -58,5 +58,24 @@ public class MangAuthenticationImpl implements MangAuthentication {
             session.close();
         }
     }
+    public int deleteUser(User u){
+        Session session = null;
+        UserDAO session1 = null;
+        try {
+            session = FactorySession.openSession();
+            session1 = FactorySession.openUserDAO();
+            User a =  session1.getUserByUsername(u,"username");// Here we get the user from the database from username
+            if (a.getUsername().equals(u.getUsername()))//So the user exist
+            {
+                session1.deleteUser(a); //Delete the username after the check if exists or not
+            }
+            return 0; //The user exist and we DELETE it
+        } catch (Exception e) {
+            // LOG
+            return 1;
+        } finally {
+            session.close();
+        }
+    }
 }
 

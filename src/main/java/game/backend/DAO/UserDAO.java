@@ -14,4 +14,5 @@ public interface UserDAO {
     //public void updateUser(int employeeID, String name, String surname, double salary);
     //public void deleteUser(int employeeID);
 
+    void deleteUser(User user); // 0 DELETE OKEY 1 DELETE WRONG
 }

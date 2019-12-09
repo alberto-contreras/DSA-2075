@@ -30,13 +30,6 @@ public class UserDAOImpl implements UserDAO{
 
 
     public  User getUserByUsername(User user, String field) {
-/*
-        Session s = FactorySession.openSession();
-        params.put (field, value);
-        User user = s.findOne(User.class, params);
-  */
-
-
         String selectQuery = QueryHelper.createQuerySELECT(user,field);
         logger.debug("Select User Query:"+ selectQuery);
         User returnUser = new User();
@@ -67,6 +60,28 @@ public class UserDAOImpl implements UserDAO{
             e.printStackTrace();
         }
         return returnUser;
+    }
+
+    public void deleteUser(User user){
+
+        String selectQuery = QueryHelper.createQueryDELETE(user,"username","password");
+        logger.debug("DELETE User Query:"+ selectQuery);
+        PreparedStatement pstm = null;
+        try {
+            pstm = conn.prepareStatement(selectQuery);
+            Object value = null;
+            int i = 1;
+            value = ObjectHelper.getter(user, "username");//We get the value of the username
+            pstm.setObject(i, value); //We set in the in the question symbol the value
+            value = ObjectHelper.getter(user, "password");//We get the value of the password
+            i=i+1;
+            pstm.setObject(i, value);
+            logger.debug("FINAL DELETE:"+pstm);
+            pstm.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
     }

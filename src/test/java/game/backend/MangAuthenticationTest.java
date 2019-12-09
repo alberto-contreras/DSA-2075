@@ -13,8 +13,8 @@ public class MangAuthenticationTest {
     @Test
     public void testAddUser() {
         mauth = new MangAuthenticationImpl();
-        int res = mauth.addUser(new User("Alberto", "1234", "Alb"));
-        Assert.assertEquals(1,res);
+        int res = mauth.addUser(new User("a", "b", "c"));
+        Assert.assertEquals(0,res);
     }
 
     @Test
@@ -24,8 +24,12 @@ public class MangAuthenticationTest {
         int res = mauth.checkUser(aux);
         Assert.assertEquals(0,res);
         Assert.assertEquals("Elon Musk",aux.getName());
-
-
-
+    }
+    @Test
+    public void  testDeleteUser(){
+        mauth = new MangAuthenticationImpl();
+        User aux = new User("a","","");
+        int res = mauth.deleteUser(aux);
+        Assert.assertEquals(0,res);
     }
 }

@@ -17,5 +17,12 @@ public interface MangAuthentication {
     * */
     public int checkUser (User u);
 
+    /**
+     * Delete the user from the DATABASE
+     * @param u
+     * @return
+     */
+    public int deleteUser (User u);
+
 
 }
