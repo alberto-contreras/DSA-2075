@@ -3,14 +3,14 @@ package game.backend.models;
 
 public class Game {
     private String idGame;
-    private String data;              //fecha de la partida
+    private String data;
     private int myDeaths;
     private int kills;
     private int level;
     private int points;
+    private int id;
 
     public Game() {
-        //this.idGame = RandomUtils.getId();  ?¿?¿?
     }
 
     public Game(String idGame, String data, int myDeaths, int kills, int level, int points) {
@@ -63,5 +63,13 @@ public class Game {
     }
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

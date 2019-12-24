@@ -57,7 +57,7 @@ public class AuthenticationService {
 
     @Path("/log")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response logUser(FormReg u) {
+    public Response logUser(FormReg u) { //Modify UserTO--> Erase it's not useful anymore
 
         if (u.getUsername()==null || u.getPassword()==null)  return Response.status(400).entity(u).build();
         User login = new User(u.getUsername(),u.getPassword(),u.getName());

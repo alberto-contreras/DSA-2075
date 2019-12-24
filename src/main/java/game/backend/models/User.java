@@ -17,9 +17,6 @@ public class User {
     int defense;
     int money;
 
-  //  private List<Obj> objects = null;
-   // private List<Game> games = null;
-
     public User(){}
 
     public User(String un, String pw, String nm){
@@ -31,8 +28,7 @@ public class User {
         this.attack = 20;
         this.defense = 0;
         this.money = 100;
-        //this.objects = new LinkedList<Obj>();
-        //this.games = new LinkedList<Game>();
+
     }
 
     public int getID() {
@@ -90,29 +86,6 @@ public class User {
     public void setMoney(int money) {
         this.money = money;
     }
-
-//    public List<Obj> getMyObject() {
-//        return objects;
-//    }
-//    public void setMyObject(List<Obj> objects) {
-//        this.objects = objects;
-//    }
-//
-//    public List<Game> getMyGames() {
-//        return games;
-//    }
-//    public void setMyGames(List<Game> games) {
-//        this.games = games;
-//    }
-//
-//    public void addObject(String objName, int objAttack, int objDefense, int price){
-//        Obj object = new Obj(objName, objAttack, objDefense, price);
-//        this.objects.add(object);
-//    }
-//    public void addGame(String id, String data, int myDeaths, int kills, int level, int points){
-//        Game game = new Game(id, data, myDeaths, kills, level, points);
-//        this.games.add(game);
-//    }
 
     public String toString() {
         return "ID: "+this.ID +" username: "+this.username+" name:"+this.name+" passwd: "+this.password+" attack:"+this.attack+" defense:"+this.defense+" health:"+this.healthPoints+" money:"+this.money;

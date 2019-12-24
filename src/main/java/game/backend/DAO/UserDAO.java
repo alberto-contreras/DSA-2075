@@ -1,6 +1,8 @@
 package game.backend.DAO;
 
+import game.backend.models.Obj;
 import game.backend.models.User;
+import game.backend.models.Game;
 
 import java.util.List;
 /**
@@ -11,8 +13,8 @@ import java.util.List;
 public interface UserDAO {
 
     User getUserByUsername (User entity, String field);
-    //public void updateUser(int employeeID, String name, String surname, double salary);
-    //public void deleteUser(int employeeID);
-
-    void deleteUser(User user); // 0 DELETE OKEY 1 DELETE WRONG
+    void deleteUser(User user);
+    void updateUser(User entity, String field); //
+    List<Obj> getAllObj (String idUser);
+    List<Game> getAllGame (String idUser);
 }

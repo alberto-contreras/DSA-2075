@@ -1,14 +1,17 @@
 package game.backend;
 
 import game.backend.DAO.SessionImpl;
+import game.backend.models.Obj;
 import game.backend.models.User;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.LinkedList;
+import java.util.List;
 public class MangAuthenticationTest {
-    MangAuthentication mauth;
 
+    MangAuthentication mauth;
 
     @Test
     public void testAddUser() {
@@ -32,4 +35,5 @@ public class MangAuthenticationTest {
         int res = mauth.deleteUser(aux);
         Assert.assertEquals(0,res);
     }
+
 }

@@ -2,22 +2,27 @@ package game.backend.models;
 
 public class Obj {
 
+    private int id;
+    private String idObj;
     private String objName;
     private int objAttack;
     private int objDefense;
     private int price;
-    //private int healthPoints;
+    private int healthPoints;
 
-    public Obj (String objName, int objAttack, int  objDefense, int price){
+    public Obj (String idObj,String objName, int objAttack, int  objDefense, int price, int healthPoints){
+        this.idObj = idObj;
         this.objName = objName;
         this.objAttack = objAttack;
         this.objDefense = objDefense;
         this.price = price;
+        this.healthPoints = healthPoints;
     }
     public Obj(){
-        //RandomUtils ¿?¿
     }
 
+    public String getIdObj() {return idObj;}
+    public void setIdObj(String id){this.idObj = id;}
     public String getObjName() {
         return objName;
     }
@@ -42,5 +47,20 @@ public class Obj {
     public int getPrice() { return price; }
     public void setPrice(int price) {
         this.price = price;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getHealthPoints() {
+        return healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
 }

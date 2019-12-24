@@ -42,6 +42,12 @@ public class QueryHelper {
 
         return sb.toString();
     }
+    public static String createQueryUPDATE(Object entity,String field) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("UPDATE ").append(entity.getClass().getSimpleName());
+        sb.append(" SET "+field+"= ? WHERE ");//Then we will append which parameter it's the one that give us the reference
+        return sb.toString();
+    }
 
 
 }

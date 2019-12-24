@@ -1,12 +1,17 @@
 package game.backend.DAO;
 
+import game.backend.models.Game;
+import game.backend.models.Obj;
 import game.backend.models.User;
 import org.apache.log4j.Logger;
+import org.eclipse.persistence.queries.ResultSetMappingQuery;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class UserDAOImpl implements UserDAO{
@@ -65,7 +70,7 @@ public class UserDAOImpl implements UserDAO{
     public void deleteUser(User user){
 
         String selectQuery = QueryHelper.createQueryDELETE(user,"username","password");
-        logger.debug("DELETE User Query:"+ selectQuery);
+        //logger.debug("DELETE User Query:"+ selectQuery);
         PreparedStatement pstm = null;
         try {
             pstm = conn.prepareStatement(selectQuery);
@@ -76,7 +81,7 @@ public class UserDAOImpl implements UserDAO{
             value = ObjectHelper.getter(user, "password");//We get the value of the password
             i=i+1;
             pstm.setObject(i, value);
-            logger.debug("FINAL DELETE:"+pstm);
+            //logger.debug("FINAL DELETE:"+pstm);
             pstm.execute();
 
         } catch (SQLException e) {
@@ -84,5 +89,86 @@ public class UserDAOImpl implements UserDAO{
         }
 
 
+    }
+    public void updateUser (User entity, String field){
+
+        String updatequery = QueryHelper.createQueryUPDATE(entity, field);
+        logger.debug("UPDATE User Query:"+ updatequery);
+        PreparedStatement pstm = null;
+    }
+
+    @Override
+    public List<Obj> getAllObj(String idUser) {
+        Obj aux = new Obj();
+        String fieldAux = "idObj";
+        //Create the SELECT query --> SELECT * FROM Obj WHERE idOBj = ?
+        String selectQuery = QueryHelper.createQuerySELECT(aux,fieldAux);
+        logger.debug("Select Obj Query:"+ selectQuery);
+        // User returnUser = new User();
+        PreparedStatement pstm = null;
+        List <Obj> myObj = new LinkedList<>();//Initialize the list that we are going to return
+        try {
+            pstm = conn.prepareStatement(selectQuery);
+            Object value = null;
+            int i = 1;
+            pstm.setObject(i, idUser); //We set in the in the question symbol the value in this case
+            //it's the id of the obj that it's the correspond to the iduser
+            logger.debug("FINAL GET ALL OBJ:"+pstm);
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()){
+                Obj auxObj = new Obj();
+                logger.debug("Checking return info from database :"+ res.getString("objName"));
+                auxObj.setId(res.getInt("id")); //We set in the auxObj all the parameters
+                auxObj.setIdObj(res.getString("idObj"));
+                auxObj.setObjName(res.getString("objName"));
+                auxObj.setObjAttack(res.getInt("objAttack"));
+                auxObj.setObjDefense(res.getInt("objDefense"));
+                auxObj.setPrice(res.getInt("price"));
+                auxObj.setHealthPoints(res.getInt("healthPoints"));
+                logger.debug("FINAL OBJ: " + auxObj.getObjName());
+                myObj.add(auxObj);//We add to the list the object one by one
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return myObj;
+    }
+    @Override
+    public List<Game> getAllGame(String idUser) {
+        Game aux = new Game();
+        String fieldAux = "idGame";
+        //Create the SELECT query --> SELECT * FROM Game WHERE idGame = ?
+        String selectQuery = QueryHelper.createQuerySELECT(aux,fieldAux);
+        logger.debug("Select Game Query:"+ selectQuery);
+        // User returnUser = new User();
+        PreparedStatement pstm = null;
+        List <Game> myGame = new LinkedList<>();//Initialize the list that we are going to return
+        try {
+            pstm = conn.prepareStatement(selectQuery);
+            Object value = null;
+            int i = 1;
+            pstm.setObject(i, idUser); //We set in the in the question symbol the value in this case
+            //it's the id of the obj that it's the correspond to the iduser
+            logger.debug("FINAL GET ALL GAMES:"+pstm);
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()){
+                Game auxGame = new Game();
+                logger.debug("Checking return info from database idGame :"+ res.getString("idGame"));
+                auxGame.setId(res.getInt("id")); //We set in the auxObj all the parameters
+                auxGame.setIdGame(res.getString("idGame"));
+                auxGame.setData(res.getString("data"));
+                auxGame.setKills(res.getInt("kills"));
+                auxGame.setLevel(res.getInt("level"));
+                auxGame.setMyDeaths(res.getInt("myDeaths"));
+                auxGame.setPoints(res.getInt("points"));
+                logger.debug("FINAL GAMES level of ech game in the list: " + auxGame.getLevel());
+                myGame.add(auxGame);//We add to the list the object one by one
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return myGame;
     }
 }
