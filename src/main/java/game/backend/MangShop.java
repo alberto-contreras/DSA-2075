@@ -1,13 +1,11 @@
-//package game.backend;
-//
-//import game.backend.models.Obj;
-//
-//import java.util.List;
-//
-//public interface MangShop {
-//
-//   // public void addObject(String objName, int objAttack, int objDefense, int price);
-//   // public int size();
-//    //public List<Obj> allObjects();
-//  //  public void addObjetWithUserName(String userName, String name, int defense, int attack, int price);
-//}
+package game.backend;
+import game.backend.models.Obj;
+import java.util.List;
+
+public interface MangShop {
+    /**Add list of objects that the user have buy
+     * @param myList we add it to the DB
+     * @return 0-Okey 1-Wrong
+     */
+    public int addPurchase (List <Obj> myList);
+}

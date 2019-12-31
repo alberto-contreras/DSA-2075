@@ -100,8 +100,8 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public List<Obj> getAllObj(String idUser) {
         Obj aux = new Obj();
-        String fieldAux = "idObj";
-        //Create the SELECT query --> SELECT * FROM Obj WHERE idOBj = ?
+        String fieldAux = "idUser";
+        //Create the SELECT query --> SELECT * FROM Obj WHERE idUser = ?
         String selectQuery = QueryHelper.createQuerySELECT(aux,fieldAux);
         logger.debug("Select Obj Query:"+ selectQuery);
         // User returnUser = new User();
@@ -120,7 +120,7 @@ public class UserDAOImpl implements UserDAO{
                 Obj auxObj = new Obj();
                 logger.debug("Checking return info from database :"+ res.getString("objName"));
                 auxObj.setId(res.getInt("id")); //We set in the auxObj all the parameters
-                auxObj.setIdObj(res.getString("idObj"));
+                auxObj.setIdUser(res.getString("idUser"));
                 auxObj.setObjName(res.getString("objName"));
                 auxObj.setObjAttack(res.getInt("objAttack"));
                 auxObj.setObjDefense(res.getInt("objDefense"));
@@ -170,5 +170,31 @@ public class UserDAOImpl implements UserDAO{
             e.printStackTrace();
         }
         return myGame;
+    }
+    public void saveMyObj(Obj myObj){
+        String insertQuery = QueryHelper.createQueryINSERTModified(myObj);
+
+        logger.debug("insertQuery "+ insertQuery);
+
+        PreparedStatement pstm = null;
+
+        try {
+            pstm = conn.prepareStatement(insertQuery);
+            pstm.setObject(1, 0);
+            int i = 2;
+            Object value = null;
+            for (String field: ObjectHelper.getFields(myObj)) {
+                if (!field.equals("id")) {
+                    value = ObjectHelper.getter(myObj, field);
+                    logger.debug("i: "+i+" field "+field+" value "+value);
+                    pstm.setObject(i++, value);
+                }
+            }
+
+            pstm.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

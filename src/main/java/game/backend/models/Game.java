@@ -2,13 +2,13 @@ package game.backend.models;
 
 
 public class Game {
+    private int id;
     private String idGame;
     private String data;
     private int myDeaths;
     private int kills;
     private int level;
     private int points;
-    private int id;
 
     public Game() {
     }

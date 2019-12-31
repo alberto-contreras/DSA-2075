@@ -24,7 +24,7 @@ public class UserService {
     MangUserImpl tm = new MangUserImpl();
     public UserService(){}
     @GET
-    @ApiOperation(value = "Get all myobj", notes = "Stats")
+    @ApiOperation(value = "Get all User Objects", notes = "Stats")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Created", response = Obj.class, responseContainer="List" ),
             @ApiResponse(code = 400, message = "Bad Request Invalid parameters"),
@@ -35,7 +35,7 @@ public class UserService {
 
     @Path("/myObj/{idUser}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getmyObj(@PathParam("idUser") String idUser) {
+    public Response getmyObjs(@PathParam("idUser") String idUser) {
 
         if (idUser == null)  return Response.status(400).build();
         List<Obj> myObj = this.tm.getAllMyObjects(idUser);
@@ -46,7 +46,7 @@ public class UserService {
         else{return Response.status(404).build();}
     }
     @GET
-    @ApiOperation(value = "Get all mygame", notes = "Stats")
+    @ApiOperation(value = "Get all User Games", notes = "Stats")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Created", response = Game.class, responseContainer="List" ),
             @ApiResponse(code = 400, message = "Bad Request Invalid parameters"),
@@ -57,7 +57,7 @@ public class UserService {
 
     @Path("/myGame/{idUser}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getmyGame(@PathParam("idUser") String idUser) {
+    public Response getmyGames(@PathParam("idUser") String idUser) {
 
         if (idUser == null)  return Response.status(400).build();
         List<Game> myGame = this.tm.getAllMyGames(idUser);

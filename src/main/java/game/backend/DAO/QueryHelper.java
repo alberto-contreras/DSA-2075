@@ -48,6 +48,29 @@ public class QueryHelper {
         sb.append(" SET "+field+"= ? WHERE ");//Then we will append which parameter it's the one that give us the reference
         return sb.toString();
     }
+    public static String createQueryINSERTModified(Object entity) {
+
+        StringBuffer sb = new StringBuffer("INSERT INTO ");
+        sb.append(entity.getClass().getSimpleName()).append(" ");
+        sb.append("(");
+
+        String [] fields = ObjectHelper.getFields(entity);
+
+        sb.append("id");
+        for (String field: fields) {
+            if (!field.equals("id")) sb.append(", ").append(field);
+        }
+
+        sb.append(") VALUES (?");
+
+        for (String field: fields) {
+            if (!field.equals("id")) sb.append(", ?");
+        }
+
+        sb.append(")");
+
+        return sb.toString();
+    }
 
 
 }

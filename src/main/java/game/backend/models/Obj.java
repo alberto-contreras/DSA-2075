@@ -2,16 +2,16 @@ package game.backend.models;
 
 public class Obj {
 
-    private int id;
-    private String idObj;
+    private int id;//The id relative of the object
+    private String idUser;//The id of the user
     private String objName;
     private int objAttack;
     private int objDefense;
     private int price;
     private int healthPoints;
 
-    public Obj (String idObj,String objName, int objAttack, int  objDefense, int price, int healthPoints){
-        this.idObj = idObj;
+    public Obj ( String idUser,String objName, int objAttack, int  objDefense, int price, int healthPoints){
+        this.idUser = idUser;
         this.objName = objName;
         this.objAttack = objAttack;
         this.objDefense = objDefense;
@@ -21,8 +21,8 @@ public class Obj {
     public Obj(){
     }
 
-    public String getIdObj() {return idObj;}
-    public void setIdObj(String id){this.idObj = id;}
+    public String getIdUser() {return idUser;}
+    public void setIdUser(String id){this.idUser = id;}
     public String getObjName() {
         return objName;
     }

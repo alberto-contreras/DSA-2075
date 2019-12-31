@@ -34,7 +34,7 @@ public class Main {
         beanConfig.setHost("localhost:8080");
         beanConfig.setBasePath("/2075App");
         beanConfig.setContact("support@example.com");
-        beanConfig.setDescription("REST API for X Manager");
+        beanConfig.setDescription("REST API for 2075Game");
         beanConfig.setLicenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html");
         beanConfig.setResourcePackage("game.backend.services");
         beanConfig.setTermsOfServiceUrl("http://www.example.com/resources/eula");
