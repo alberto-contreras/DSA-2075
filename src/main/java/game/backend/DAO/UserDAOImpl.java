@@ -33,7 +33,7 @@ public class UserDAOImpl implements UserDAO{
      * @return User that we are searching after the SELECT * FROM Users WHERE username = "user.getUsername"
      */
 
-
+    @Override
     public  User getUserByUsername(User user, String field) {
         String selectQuery = QueryHelper.createQuerySELECT(user,field);
         logger.debug("Select User Query:"+ selectQuery);
@@ -66,7 +66,7 @@ public class UserDAOImpl implements UserDAO{
         }
         return returnUser;
     }
-
+    @Override
     public void deleteUser(User user){
 
         String selectQuery = QueryHelper.createQueryDELETE(user,"username","password");
@@ -87,15 +87,59 @@ public class UserDAOImpl implements UserDAO{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
-    public void updateUser (User entity, String field){
+    @Override
+    public void updateUserMoney (User entity){
 
-        String updatequery = QueryHelper.createQueryUPDATE(entity, field);
+        String updatequery = QueryHelper.createQueryUPDATE(entity, "money", "username");
         logger.debug("UPDATE User Query:"+ updatequery);
         PreparedStatement pstm = null;
+        try {
+            pstm = conn.prepareStatement(updatequery);
+            //Now we set the value in the question symbol
+            pstm.setObject(1, entity.getMoney());
+            pstm.setObject(2, entity.getUsername());
+            pstm.executeUpdate();
+            logger.debug("FINAL UPDATE Money :"+pstm);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+    @Override
+    public void updateUsername (User entity){
+
+        String updatequery = QueryHelper.createQueryUPDATE(entity, "username", "ID");
+        logger.debug("UPDATE User Query:"+ updatequery);
+        PreparedStatement pstm = null;
+        try {
+            pstm = conn.prepareStatement(updatequery);
+            //Now we set the value in the question symbol
+            pstm.setObject(1, entity.getUsername());
+            pstm.setObject(2, entity.getID());
+            pstm.executeUpdate();
+            //logger.debug("FINAL UPDATE Username :"+pstm);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateUserPassword (User entity){
+
+        String updatequery = QueryHelper.createQueryUPDATE(entity, "password", "username");
+        logger.debug("UPDATE User Query:"+ updatequery);
+        PreparedStatement pstm = null;
+        try {
+            pstm = conn.prepareStatement(updatequery);
+            //Now we set the value in the question symbol
+            pstm.setObject(1, entity.getPassword());
+            pstm.setObject(2, entity.getUsername());
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public List<Obj> getAllObj(String idUser) {

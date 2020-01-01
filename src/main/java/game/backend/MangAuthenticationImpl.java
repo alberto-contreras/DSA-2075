@@ -3,6 +3,7 @@ import game.backend.*;
 import game.backend.DAO.*;
 import game.backend.models.User;
 import org.apache.log4j.Logger;
+import org.omg.CORBA.UserException;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -75,6 +76,16 @@ public class MangAuthenticationImpl implements MangAuthentication {
             return 1;
         } finally {
             session.close();
+        }
+    }
+    public int updateMoney(User u){
+        UserDAO session = null;
+        try {
+            session = FactorySession.openUserDAO();
+            session.updateUserMoney(u);
+            return 0;
+        } catch (Exception e) {
+            return 1;
         }
     }
 }

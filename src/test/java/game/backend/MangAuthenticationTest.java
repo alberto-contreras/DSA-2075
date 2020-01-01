@@ -35,5 +35,12 @@ public class MangAuthenticationTest {
         int res = mauth.deleteUser(aux);
         Assert.assertEquals(0,res);
     }
+    @Test
+    public void testUpdatePassword(){
+        mauth = new MangAuthenticationImpl();
+        User aux = new User("Steve","","");
+        aux.setMoney(2020);
+        mauth.updateMoney(aux);
+    }
 
 }

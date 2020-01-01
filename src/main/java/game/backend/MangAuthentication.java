@@ -23,6 +23,7 @@ public interface MangAuthentication {
      * @return
      */
     public int deleteUser (User u);
+    public int updateMoney(User u);
 
 
 }

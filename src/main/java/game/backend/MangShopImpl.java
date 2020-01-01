@@ -8,6 +8,11 @@ import game.backend.models.Obj;
 import java.util.List;
 
 public class MangShopImpl implements MangShop {
+    /**
+     *
+     * @param myList for each object in the list we add it to the database
+     * @return
+     */
     @Override
     public int addPurchase(List<Obj> myList) {
         UserDAO session = null;

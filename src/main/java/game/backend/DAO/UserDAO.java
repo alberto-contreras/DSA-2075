@@ -14,9 +14,12 @@ public interface UserDAO {
 
     User getUserByUsername (User entity, String field);
     void deleteUser(User user);
-    void updateUser(User entity, String field); //
+    void updateUserMoney(User entity);
+    void updateUsername(User entity);
+    void updateUserPassword(User entity);
     List<Obj> getAllObj (String idUser);
     List<Game> getAllGame (String idUser);
+
 
     /**
      * This it's a particular save because if we save with the generic save method there are problems
