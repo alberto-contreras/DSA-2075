@@ -8,10 +8,14 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.eclipse.persistence.oxm.annotations.XmlParameter;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+/**
+ * Service that provide all the operations related with the User
+ */
+
 
 @Api(value = "/authen", description = "Endpoint to Authentication Service")
 @Path("/authent")

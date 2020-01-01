@@ -12,6 +12,13 @@ import java.util.List;
 
 public interface UserDAO {
 
+    /**
+     *  We search in the DB the user with the field and then in MangAuthenticationImpl we
+     *  check if the password and username are the same in order to login
+     * @param entity
+     * @param field
+     * @return User that we are searching after the SELECT * FROM Users WHERE username = "user.getUsername"
+     */
     User getUserByUsername (User entity, String field);
     void deleteUser(User user);
     void updateUserMoney(User entity);
@@ -19,8 +26,6 @@ public interface UserDAO {
     void updateUserPassword(User entity);
     List<Obj> getAllObj (String idUser);
     List<Game> getAllGame (String idUser);
-
-
     /**
      * This it's a particular save because if we save with the generic save method there are problems
      * with the foreign keys and the database, this is prepared to be use with the method

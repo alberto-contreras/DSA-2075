@@ -24,15 +24,6 @@ public class UserDAOImpl implements UserDAO{
         this.conn = conn;
     }
 
-
-    /**
-     *  We search in the DB the user with the field and then in MangAuthenticationImpl we
-     *  check if the password and username are the same in order to login
-     * @param user
-     * @param field
-     * @return User that we are searching after the SELECT * FROM Users WHERE username = "user.getUsername"
-     */
-
     @Override
     public  User getUserByUsername(User user, String field) {
         String selectQuery = QueryHelper.createQuerySELECT(user,field);

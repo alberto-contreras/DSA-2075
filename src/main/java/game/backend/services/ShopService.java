@@ -17,6 +17,10 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+/**
+ * Service that provide all the operations related with the Shop
+ */
+
 @Api(value = "/shop", description = "Endpoint to Shop Service")
 @Path("/shop")
 

@@ -18,6 +18,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
+/**
+ * Service that provide all the operations related with the stats of a User
+ */
+
 @Api(value = "/stats", description = "Endpoint to User Service")
 @Path("/stats")
 public class UserService {

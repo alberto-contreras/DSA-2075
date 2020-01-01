@@ -20,11 +20,27 @@ public interface MangAuthentication {
     /**
      * Delete the user from the DATABASE
      * @param u
-     * @return
+     * @return 0-Okey 1-Wrong
      */
     public int deleteUser (User u);
+
+    /**
+     * Update Money of the user that the frontend application send
+     * @param u
+     * @return 0-Okey 1-Wrong
+     */
     public int updateMoney(User u);
+    /**
+     * Update Password of the user that the frontend application send
+     * @param u
+     * @return 0-Okey 1-Wrong
+     */
     public int updatePassword (User u);
+    /**
+     * Update Username of the user that the frontend application send
+     * @param u
+     * @return 0-Okey 1-Wrong
+     */
     public int updateUsername (User u);
 
 
