@@ -24,6 +24,8 @@ public interface MangAuthentication {
      */
     public int deleteUser (User u);
     public int updateMoney(User u);
+    public int updatePassword (User u);
+    public int updateUsername (User u);
 
 
 }

@@ -116,8 +116,8 @@ public class UserDAOImpl implements UserDAO{
             //Now we set the value in the question symbol
             pstm.setObject(1, entity.getUsername());
             pstm.setObject(2, entity.getID());
+            logger.debug("FINAL UPDATE Username :"+pstm);
             pstm.executeUpdate();
-            //logger.debug("FINAL UPDATE Username :"+pstm);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -135,6 +135,7 @@ public class UserDAOImpl implements UserDAO{
             pstm.setObject(1, entity.getPassword());
             pstm.setObject(2, entity.getUsername());
             pstm.executeUpdate();
+            logger.debug("FINAL UPDATE Password :"+pstm);
         } catch (SQLException e) {
             e.printStackTrace();
         }

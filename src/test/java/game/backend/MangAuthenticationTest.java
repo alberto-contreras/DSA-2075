@@ -13,14 +13,14 @@ public class MangAuthenticationTest {
 
     MangAuthentication mauth;
 
-    @Test
+    @Test //work!
     public void testAddUser() {
         mauth = new MangAuthenticationImpl();
         int res = mauth.addUser(new User("a", "b", "c"));
         Assert.assertEquals(0,res);
     }
 
-    @Test
+    @Test //work!
     public void testGetUser() {
         mauth = new MangAuthenticationImpl();
         User aux = new User("Elon","tesla","Alb");
@@ -28,19 +28,36 @@ public class MangAuthenticationTest {
         Assert.assertEquals(0,res);
         Assert.assertEquals("Elon Musk",aux.getName());
     }
-    @Test
+    @Test //work!
     public void  testDeleteUser(){
         mauth = new MangAuthenticationImpl();
         User aux = new User("a","","");
         int res = mauth.deleteUser(aux);
         Assert.assertEquals(0,res);
     }
-    @Test
-    public void testUpdatePassword(){
+    @Test //work!
+    public void testUpdateMoney(){
         mauth = new MangAuthenticationImpl();
         User aux = new User("Steve","","");
         aux.setMoney(2020);
         mauth.updateMoney(aux);
+    }
+    @Test //work!
+    public void testUpdatePassword(){
+        mauth = new MangAuthenticationImpl();
+        User aux = new User("Steve","","");
+        aux.setPassword("jobs2020");
+        mauth.updatePassword(aux);
+    }
+    @Test //work!
+    public void testUpdateUsername(){
+        mauth = new MangAuthenticationImpl();
+        User aux = new User("Alberto2020","","");
+        //Here from frontend we will receive a complete user with all the fields
+        //Here we need to work putting the ones that we want to work with
+        aux.setID(19);
+        int res = mauth.updateUsername(aux);
+
     }
 
 }

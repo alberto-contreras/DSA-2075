@@ -88,5 +88,26 @@ public class MangAuthenticationImpl implements MangAuthentication {
             return 1;
         }
     }
+    public int updatePassword(User u){
+        UserDAO session = null;
+        try {
+            session = FactorySession.openUserDAO();
+            session.updateUserPassword(u);
+            return 0;
+        } catch (Exception e) {
+            return 1;
+        }
+    }
+    public int updateUsername(User u){
+        UserDAO session = null;
+        try {
+            session = FactorySession.openUserDAO();
+            session.updateUsername(u);
+            return 0;
+        } catch (Exception e) {
+            return 1;
+        }
+    }
+
 }
 
