@@ -20,11 +20,53 @@ public interface UserDAO {
      * @return User that we are searching after the SELECT * FROM Users WHERE username = "user.getUsername"
      */
     User getUserByUsername (User entity, String field);
+
+    /**
+     * Delete the user
+     * @param user
+     */
     void deleteUser(User user);
+
+    /**
+     * Delete the objects of a user
+     * @param user
+     */
+    void deleteObjs(User user);
+    /**
+     * Delete the games of a user
+     * @param user
+     */
+    void deleteGames(User user);
+
+    /**
+     * Update the money of the user that we send in the entity field
+     * @param entity
+     */
     void updateUserMoney(User entity);
+
+    /**
+     * Update the username of an existing user
+     * @param entity
+     */
     void updateUsername(User entity);
+    /**
+     * Update the password of an existing user
+     * @param entity
+     */
     void updateUserPassword(User entity);
+
+    /**
+     * Obtain the list of objects of a user
+     * @param idUser
+     * @return
+     */
     List<Obj> getAllObj (String idUser);
+
+    /**
+     * Obtain the list of games of a user
+     * @param idUser
+     * @return
+     */
     List<Game> getAllGame (String idUser);
     /**
      * This it's a particular save because if we save with the generic save method there are problems

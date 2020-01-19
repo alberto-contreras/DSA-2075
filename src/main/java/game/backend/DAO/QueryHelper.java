@@ -42,6 +42,14 @@ public class QueryHelper {
 
         return sb.toString();
     }
+    public static String createQueryDELETEfromOneField(Object entity,String field){
+        StringBuffer sb = new StringBuffer();
+        sb.append("DELETE FROM ").append(entity.getClass().getSimpleName());
+        sb.append(" WHERE "+field+" = ?");
+
+
+        return sb.toString();
+    }
     public static String createQueryUPDATE(Object entity,String fieldSet, String fieldSearch) {
         StringBuffer sb = new StringBuffer();
         sb.append("UPDATE ").append(entity.getClass().getSimpleName());

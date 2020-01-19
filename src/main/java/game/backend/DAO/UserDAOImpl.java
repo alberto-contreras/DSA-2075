@@ -80,6 +80,45 @@ public class UserDAOImpl implements UserDAO{
         }
     }
     @Override
+    public void deleteObjs(User user){
+
+        Obj aux = new Obj(); //In order to delete from table Obj we pass in the createquery the table name
+        String selectQuery = QueryHelper.createQueryDELETEfromOneField(aux,"idUser");
+        //logger.debug("DELETE User Query:"+ selectQuery);
+        PreparedStatement pstm = null;
+        try {
+            pstm = conn.prepareStatement(selectQuery);
+            Object value = null;
+            int i = 1;
+            value = ObjectHelper.getter(user, "ID");//We get the value of the username
+            pstm.setObject(i, value); //We set in the in the question symbol the value
+            logger.debug("FINAL DELETE:"+pstm);
+            pstm.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void deleteGames(User user){
+
+        Game aux = new Game(); //In order to delete from table Obj we pass in the createquery the table name
+        String selectQuery = QueryHelper.createQueryDELETEfromOneField(aux,"idGame");
+        //logger.debug("DELETE User Query:"+ selectQuery);
+        PreparedStatement pstm = null;
+        try {
+            pstm = conn.prepareStatement(selectQuery);
+            Object value = null;
+            int i = 1;
+            value = ObjectHelper.getter(user, "ID");//We get the value of the username
+            pstm.setObject(i, value); //We set in the in the question symbol the value
+            logger.debug("FINAL DELETE:"+pstm);
+            pstm.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
     public void updateUserMoney (User entity){
 
         String updatequery = QueryHelper.createQueryUPDATE(entity, "money", "username");

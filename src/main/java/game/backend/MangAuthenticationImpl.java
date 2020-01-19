@@ -68,6 +68,10 @@ public class MangAuthenticationImpl implements MangAuthentication {
             User a =  session1.getUserByUsername(u,"username");// Here we get the user from the database from username
             if (a.getUsername().equals(u.getUsername()))//So the user exist
             {
+                //In order to delete the user we need to delete the reference and fields
+                //from the other tables Obj and Game
+                session1.deleteObjs(a); //Delete the user objects
+                session1.deleteGames(a);//Delete the user games
                 session1.deleteUser(a); //Delete the username after the check if exists or not
             }
             return 0; //The user exist and we DELETE it

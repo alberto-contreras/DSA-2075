@@ -123,22 +123,5 @@ public class AuthenticationService {
         if (res == 0){return Response.status(200).build();}
         else{return Response.status(400).build();}
     }
-//    @POST
-//    @ApiOperation(value = "Update user username ", notes = "Update")
-//    @ApiResponses(value = {
-//            @ApiResponse(code = 200, message = "Updated"),
-//            @ApiResponse(code = 400, message = "Bad Request Invalid parameters")
-//
-//
-//    })
-//
-//    @Path("/updatePassword")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response updateUsername(User u) {
-//
-//        if (u.getUsername()==null || u.getPassword()==null || u.getName() == null)  return Response.status(400).build();
-//        int res = tm.updateUsername(u);
-//        if (res == 0){return Response.status(200).build();}
-//        else{return Response.status(400).build();}
-//    }
+
 }
